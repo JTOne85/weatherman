@@ -64,16 +64,6 @@ namespace Weatherman.Console
             }
         }
 
-        private static (bool, int) GetCityInput()
-        {
-            System.Console.WriteLine("We currently only support Cape Town's weather");
-            System.Console.WriteLine("(1.) Get Cape Town's current weather");
-            System.Console.WriteLine("(2.) Exit");
-            
-            var success = int.TryParse(System.Console.ReadLine(), out var cityInput);
-            return (success, cityInput);
-        }
-
         private static void RetrieveDataFromOpenWeather(string location)
         {
             var displayFormat = GetDisplayFormat();
@@ -105,6 +95,16 @@ namespace Weatherman.Console
             FormattingService.PrintFormattedObject(FormattingService.CreateFormattedWeatherForecast(forecastRaw));
         }
 
+        private static (bool, int) GetCityInput()
+        {
+            System.Console.WriteLine("We currently only support Cape Town's weather");
+            System.Console.WriteLine("(1.) Get Cape Town's current weather");
+            System.Console.WriteLine("(2.) Exit");
+            
+            var success = int.TryParse(System.Console.ReadLine(), out var cityInput);
+            return (success, cityInput);
+        }
+        
         private static int GetDisplayFormat()
         {
             System.Console.WriteLine("How would you like the result to be displayed?");
