@@ -6,12 +6,8 @@ using Weatherman.Core.Entities;
 
 namespace Weatherman.Core.Services
 {
-    public class FormattingService
+    public static class FormattingService
     {
-        public FormattingService()
-        {
-        }
-        
         public static RootObject CreateFormattedWeatherForecast(string forecastRaw)
         {
             var weatherForecast = JsonSerializer.Deserialize<RootObject>(forecastRaw);

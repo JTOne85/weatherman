@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel;
 using System.Configuration;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Weatherman.Core.Services;
 
 namespace Weatherman.Console
 {
-    public class Program
+    public static class Program
     {
         private static string _displayFormatName = "json";
         private static readonly string ApiKey;
@@ -30,15 +31,14 @@ namespace Weatherman.Console
                 "Welcome to the Weather Service console app. Please select an option from the menu:");
             System.Console.WriteLine("(1.) Choose a city");
             System.Console.WriteLine("(2.) Exit");
-            int inputValue;
-            var success = int.TryParse(System.Console.ReadLine(), out inputValue);
-            if (!success)
-            {
-                System.Console.WriteLine("Please use numbers as input");
-                DisplayMenu();
-            }
-
-            return success;
+            
+            var success = int.TryParse(System.Console.ReadLine(), out _);
+            if (success) return true;
+            
+            System.Console.WriteLine("Please use numbers as input");
+            DisplayMenu();
+            
+            return false;
         }
 
         private static void DisplayWeatherMenu()
@@ -60,8 +60,6 @@ namespace Weatherman.Console
                     case 2:
                         System.Console.WriteLine("Have a good day!");
                         break;
-                    default:
-                        break;
                 }
             }
         }
@@ -69,11 +67,10 @@ namespace Weatherman.Console
         private static (bool, int) GetCityInput()
         {
             System.Console.WriteLine("We currently only support Cape Town's weather");
-            System.Console.WriteLine("(1.) Cape Town");
+            System.Console.WriteLine("(1.) Get Cape Town's current weather");
             System.Console.WriteLine("(2.) Exit");
-            var input = System.Console.ReadLine();
-            int cityInput;
-            var success = int.TryParse(input, out cityInput);
+            
+            var success = int.TryParse(System.Console.ReadLine(), out var cityInput);
             return (success, cityInput);
         }
 
@@ -83,8 +80,6 @@ namespace Weatherman.Console
             var result = WeatherService.GetWeatherByStringLocation(location, ApiKey, displayFormat);
             switch (displayFormat)
             {
-                case 1:
-                    break;
                 case 2:
                     _displayFormatName = "XML";
                     break;
@@ -97,7 +92,6 @@ namespace Weatherman.Console
                     _displayFormatName = "human readible";
                 }
                     break;
-                default: break;
             }
 
             if (displayFormat != 3)
@@ -114,10 +108,10 @@ namespace Weatherman.Console
         private static int GetDisplayFormat()
         {
             System.Console.WriteLine("How would you like the result to be displayed?");
-            System.Console.WriteLine("1. JSON");
+            System.Console.WriteLine("1. Raw JSON");
             System.Console.WriteLine("2. XML");
-            System.Console.WriteLine("3. Human readible");
-            System.Console.WriteLine("4. Just the useful stuff, please");
+            System.Console.WriteLine("3. Formatted");
+            System.Console.WriteLine("4. Nicely formatted and only displaying data that will be of interest to the public");
             var answer = System.Console.ReadLine();
 
             int.TryParse(answer, out var displayFormat);

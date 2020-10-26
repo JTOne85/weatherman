@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Weatherman.Core.Services
 {
-    public class WeatherService
+    public static class WeatherService
     {
         public static async Task<string> GetWeatherByStringLocation(string location, string apiKey, int displayFormat)
         {
@@ -23,10 +23,6 @@ namespace Weatherman.Core.Services
 
             switch (displayFormat)
             {
-                case 1:
-                case 3:
-                case 4:
-                    break;
                 case 2:
                     url += "&mode=xml";
                     break;
