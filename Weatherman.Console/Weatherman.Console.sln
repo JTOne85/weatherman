@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weatherman.Console", "Weatherman.Console\Weatherman.Console.csproj", "{081634C0-5E10-4D1E-ACB1-A7FF1C0FF108}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weatherman.Console", "Weatherman.Console\Weatherman.Console.csproj", "{081634C0-5E10-4D1E-ACB1-A7FF1C0FF108}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weatherman.Core", "Weatherman.Core\Weatherman.Core.csproj", "{D5B19B5D-5A4B-45C4-81E4-601CC7F0D713}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{081634C0-5E10-4D1E-ACB1-A7FF1C0FF108}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{081634C0-5E10-4D1E-ACB1-A7FF1C0FF108}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{081634C0-5E10-4D1E-ACB1-A7FF1C0FF108}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5B19B5D-5A4B-45C4-81E4-601CC7F0D713}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5B19B5D-5A4B-45C4-81E4-601CC7F0D713}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5B19B5D-5A4B-45C4-81E4-601CC7F0D713}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5B19B5D-5A4B-45C4-81E4-601CC7F0D713}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
