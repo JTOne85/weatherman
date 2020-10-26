@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Net.Http;
 using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
@@ -9,13 +10,14 @@ namespace Weatherman.Core.Services
     {
         public static async Task<string> GetWeatherByStringLocation(string location, string apiKey)
         {
-            var encodedLocation = location.Replace(" ", "%20");
-            var baseUrl = $"http://api.openweathermap.org/data/2.5/weather?q={encodedLocation}&appid={apiKey}";
+            var baseUrl = ConfigurationManager.AppSettings.Get("openWeatherUrl");
+
             var httpClient = new HttpClient();
-            var blah =  httpClient.GetAsync(baseUrl).Result;
-            blah.EnsureSuccessStatusCode();
-            string responseBody = await blah.Content.ReadAsStringAsync();
-            return responseBody;
+            var response = httpClient.GetAsync($"{baseUrl}?q={location}&appid={apiKey}").Result;
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+            
+            
         }
 
     }

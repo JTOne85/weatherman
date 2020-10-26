@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using System.Threading.Tasks;
 using Weatherman.Core.Services;
 
 namespace Weatherman.Console
@@ -62,10 +63,30 @@ namespace Weatherman.Console
 
         private static void RetrieveDataFromOpenWeather(string location)
         {
+            System.Console.WriteLine("How would you like the result to be displayed?");
+            System.Console.WriteLine("1. JSON");
+            System.Console.WriteLine("2. XML");
+            System.Console.WriteLine("3. Human readible");
+            System.Console.WriteLine("4. Just the useful stuff, please");
+            var answer = System.Console.ReadLine();
+
+            int displayFormat;
+            int.TryParse(answer, out displayFormat);
+
             var apiKey = ConfigurationManager.AppSettings.Get("apiKey");
             var result = WeatherService.GetWeatherByStringLocation(location, apiKey);
+
+            switch (displayFormat)
+            {
+                case 1:
+                    System.Console.WriteLine($"Weather report: \n {result.Result}");
+                    break;
+                case 2: break;
+                case 3: break;
+                case 4: break;
+                default: break;
+            }
             
         }
     }
-
 }
