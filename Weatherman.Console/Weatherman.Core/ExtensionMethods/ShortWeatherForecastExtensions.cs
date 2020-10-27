@@ -15,8 +15,10 @@ namespace Weatherman.Core.ExtensionMethods
             var evening = new TimeSpan(18, 0, 0);
 
             var salutation = GetSalutation(now, evening, midday);
-            stringBuilder.AppendLine($"{salutation}, here is the current weather forecast at {forecast.CurrentTime:dddd, d MMMM, yyyy} for {forecast.Name}");
-            stringBuilder.AppendLine($"The current temperature is: {forecast.CurrentTemp}°C, " +
+            stringBuilder.AppendLine("====================================================================================================");
+            stringBuilder.AppendLine($"{salutation},");
+            stringBuilder.AppendLine($"here follows the current weather forecast at {forecast.CurrentTime:dddd, d MMMM, yyyy} for {forecast.Name}");
+            stringBuilder.AppendLine($"The current temperature is: {Math.Round(forecast.CurrentTemp)}°C, " +
                                      $"the minimum is {Math.Round(forecast.MinimumTemp)}°C with a maximum of " +
                                      $"{Math.Round(forecast.MaximumTemp)}°C and it feels like {Math.Round(forecast.FeelsLike)}°C");
             stringBuilder.AppendLine();
@@ -24,6 +26,7 @@ namespace Weatherman.Core.ExtensionMethods
             GetSunriseOrSunset(forecast, now, stringBuilder);
             stringBuilder.AppendLine();
             stringBuilder.AppendLine("Please enjoy the rest of your day");
+            stringBuilder.AppendLine("===================================================================================================");
 
             return stringBuilder.ToString();
         }
@@ -41,7 +44,7 @@ namespace Weatherman.Core.ExtensionMethods
         private static void GetWindReading(ShortWeatherForecast forecast, StringBuilder stringBuilder)
         {
             stringBuilder.AppendLine(forecast.WindSpeed > 0
-                ? $"There is currently a wind of {Math.Round(forecast.WindSpeed * 3.6, 2)} km/h  blowing {forecast.WindDirection}"
+                ? $"There is currently a wind of {Math.Round(forecast.WindSpeed * 3.6, 2)} km/h blowing {forecast.WindDirection}"
                 : "There there is currently no wind");
         }
 

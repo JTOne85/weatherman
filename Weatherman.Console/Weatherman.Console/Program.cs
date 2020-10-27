@@ -93,6 +93,7 @@ namespace Weatherman.Console
         private static void GetShortWeatherForecast(string forecastRaw)
         {
             var shortWeatherString = FormattingService.GetShortWeatherForecast(forecastRaw).ToShortWeatherString();
+            System.Console.Clear();
             System.Console.Write(shortWeatherString);
         }
 
