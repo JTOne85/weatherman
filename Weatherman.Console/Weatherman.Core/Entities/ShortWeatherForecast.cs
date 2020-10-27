@@ -8,7 +8,7 @@ namespace Weatherman.Core.Entities
         public string Description { get; set; }
         public string Icon { get; set; }
         public float MinimumTemp { get; set; }
-        public int MaximumTemp { get; set; }
+        public float MaximumTemp { get; set; }
         
         public float CurrentTemp {get;set;}
         public float FeelsLike { get; set; }
