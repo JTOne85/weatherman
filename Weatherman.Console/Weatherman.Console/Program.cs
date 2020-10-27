@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using Weatherman.Core.Entities;
 using Weatherman.Core.ExtensionMethods;
 using Weatherman.Core.Services;
@@ -31,11 +32,16 @@ namespace Weatherman.Console
             System.Console.WriteLine("(1.) Choose a city");
             System.Console.WriteLine("(2.) Exit");
             
-            var success = int.TryParse(System.Console.ReadLine(), out _);
+            var success = int.TryParse(System.Console.ReadLine(), out var input);
+            switch (input)
+            {
+                case 2:
+                    System.Console.WriteLine("Have a good day!");
+                    return false;
+            }
             if (success) return true;
             
             System.Console.WriteLine("Please use numbers as input");
-            DisplayMenu();
             
             return false;
         }
@@ -53,10 +59,12 @@ namespace Weatherman.Console
                 switch (cityInput)
                 {
                     case 1:
+                        System.Console.Clear();
                         System.Console.WriteLine("Calling the weatherman...");
                         RetrieveDataFromOpenWeather("Cape Town");
                         break;
                     case 2:
+                        System.Console.Clear();
                         System.Console.WriteLine("Have a good day!");
                         break;
                 }
@@ -82,6 +90,9 @@ namespace Weatherman.Console
                     GetShortWeatherForecast(result.Result);
                 }
                     break;
+                case 5: 
+                    System.Console.WriteLine("Have a good day!");
+                    break;
             }
 
             if (displayFormat < 3)
@@ -105,6 +116,7 @@ namespace Weatherman.Console
 
         private static (bool, int) GetCityInput()
         {
+            System.Console.Clear();
             System.Console.WriteLine("We currently only support Cape Town's weather");
             System.Console.WriteLine("(1.) Get Cape Town's current weather");
             System.Console.WriteLine("(2.) Exit");
@@ -115,11 +127,13 @@ namespace Weatherman.Console
         
         private static int GetDisplayFormat()
         {
+            System.Console.Clear();
             System.Console.WriteLine("How would you like the result to be displayed?");
-            System.Console.WriteLine("1. Raw JSON");
-            System.Console.WriteLine("2. XML");
-            System.Console.WriteLine("3. Formatted");
-            System.Console.WriteLine("4. Nicely formatted and only displaying data that will be of interest to the public");
+            System.Console.WriteLine("(1.) Raw JSON");
+            System.Console.WriteLine("(2.) XML");
+            System.Console.WriteLine("(3.) Formatted");
+            System.Console.WriteLine("(4.) Just the useful stuff, please");
+            System.Console.WriteLine("(5.) Exit");
             var answer = System.Console.ReadLine();
 
             int.TryParse(answer, out var displayFormat);
