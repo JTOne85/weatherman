@@ -99,7 +99,8 @@ namespace Weatherman.Console
 
         private static void FormatWeatherForecast(string forecastRaw)
         {
-            FormattingService.PrintFormattedObject(FormattingService.CreateFormattedWeatherForecast(forecastRaw));
+            var result = FormattingService.ConvertToFlatFullWeatherForecast(forecastRaw);
+            FormattingService.PrintFormattedObject(result);
         }
 
         private static (bool, int) GetCityInput()
