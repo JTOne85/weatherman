@@ -2,7 +2,7 @@
 
 namespace Weatherman.Core.Entities
 {
-    public abstract class Clouds
+    public class Clouds
     {
         [JsonPropertyName("all")] public int All { get; set; }
     }

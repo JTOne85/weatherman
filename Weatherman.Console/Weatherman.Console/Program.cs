@@ -80,6 +80,7 @@ namespace Weatherman.Console
                 case 4:
                 {
                     _displayFormatName = "human readible";
+                    GetShortWeatherForecast(result.Result);
                 }
                     break;
             }
@@ -88,6 +89,11 @@ namespace Weatherman.Console
             {
                 System.Console.WriteLine($"Weather report in {_displayFormatName} format: \n {result.Result}");
             }
+        }
+
+        private static void GetShortWeatherForecast(string forecastRaw)
+        {
+            FormattingService.GetShortWeatherForecast(forecastRaw);
         }
 
         private static void FormatWeatherForecast(string forecastRaw)

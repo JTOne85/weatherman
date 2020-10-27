@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace Weatherman.Core.Entities
 {
-    public abstract class RootObject
+    public class RootObject
     {
         [JsonPropertyName("coord")] public Coord Coordinates { get; set; }
         [JsonPropertyName("weather")] public Weather[] Weather { get; set; }

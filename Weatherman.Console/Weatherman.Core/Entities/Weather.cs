@@ -2,7 +2,7 @@
 
 namespace Weatherman.Core.Entities
 {
-    public abstract class Weather
+    public class Weather
     {
         [JsonPropertyName("id")] public int Id { get; set; }
         [JsonPropertyName("main")] public string Main { get; set; }
