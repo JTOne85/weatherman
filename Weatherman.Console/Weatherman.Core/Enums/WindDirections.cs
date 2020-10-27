@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Weatherman.Core.Services
+namespace Weatherman.Core.Enums
 {
     public enum WindDirections
     {

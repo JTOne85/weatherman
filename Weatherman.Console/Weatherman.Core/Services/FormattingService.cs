@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Text.Json;
 using Weatherman.Core.Entities;
+using Weatherman.Core.Enums;
 using Weatherman.Core.ExtensionMethods;
 
 

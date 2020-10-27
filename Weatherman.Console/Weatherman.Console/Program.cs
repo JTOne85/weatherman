@@ -1,6 +1,4 @@
-﻿using System;
-using System.Configuration;
-using Weatherman.Core.Entities;
+﻿using System.Configuration;
 using Weatherman.Core.ExtensionMethods;
 using Weatherman.Core.Services;
 

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Linq;
-using Weatherman.Core.Services;
+using Weatherman.Core.Enums;
 
 namespace Weatherman.Core.ExtensionMethods
 {
