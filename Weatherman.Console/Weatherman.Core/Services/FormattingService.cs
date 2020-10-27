@@ -7,7 +7,7 @@ using Weatherman.Core.ExtensionMethods;
 
 namespace Weatherman.Core.Services
 {
-    public static class FormattingService
+    public class FormattingService
     {
         public static RootObject CreateFormattedWeatherForecast(string forecastRaw)
         {
@@ -15,7 +15,7 @@ namespace Weatherman.Core.Services
             return weatherForecast;
         }
 
-        public static void PrintFormattedObject(RootObject weatherForecast)
+        public static void PrintFormattedObject<T>(T weatherForecast) where T: class
         {
             foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(weatherForecast))
             {
@@ -25,11 +25,11 @@ namespace Weatherman.Core.Services
             }
         }
 
-        public static void GetShortWeatherForecast(string forecastRaw)
+        public static ShortWeatherForecast GetShortWeatherForecast(string forecastRaw)
         {
             var weatherForecast = JsonSerializer.Deserialize<RootObject>(forecastRaw);
 
-            var shortForecast = new ShortWeatherForecast
+            return new ShortWeatherForecast
             {
                 Main = weatherForecast.Weather[0].Main,
                 Description = weatherForecast.Weather[0].Description,
@@ -47,7 +47,7 @@ namespace Weatherman.Core.Services
                 CurrentTime = GetDateTime(weatherForecast.Date)
             };
         }
-
+        
         private static DateTime GetDateTime(int unixTime)
         {
             var dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);

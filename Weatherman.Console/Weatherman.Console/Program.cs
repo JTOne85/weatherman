@@ -1,4 +1,6 @@
 ﻿using System.Configuration;
+using Weatherman.Core.Entities;
+using Weatherman.Core.ExtensionMethods;
 using Weatherman.Core.Services;
 
 namespace Weatherman.Console
@@ -82,7 +84,7 @@ namespace Weatherman.Console
                     break;
             }
 
-            if (displayFormat != 3)
+            if (displayFormat < 3)
             {
                 System.Console.WriteLine($"Weather report in {_displayFormatName} format: \n {result.Result}");
             }
@@ -90,7 +92,8 @@ namespace Weatherman.Console
 
         private static void GetShortWeatherForecast(string forecastRaw)
         {
-            FormattingService.GetShortWeatherForecast(forecastRaw);
+            var shortWeatherString = FormattingService.GetShortWeatherForecast(forecastRaw).ToShortWeatherString();
+            System.Console.Write(shortWeatherString);
         }
 
         private static void FormatWeatherForecast(string forecastRaw)
