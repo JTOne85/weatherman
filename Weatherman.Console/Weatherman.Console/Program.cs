@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using System.Configuration;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 using Weatherman.Core.Services;
 
 namespace Weatherman.Console
